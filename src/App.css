@@ -1,0 +1,320 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #1e3c2c 0%, #2d5a2c 100%);
+  font-family: 'Comic Neue', 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(255, 245, 215, 0.95);
+  border-radius: 30px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border: 3px solid #ffd966;
+}
+
+h1 {
+  color: #ffd966;
+  text-shadow: 3px 3px 0 #6b4c3b;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  background: linear-gradient(45deg, #ffd966, #ffb347);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+h2 {
+  color: #6b4c3b;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.8em;
+  border-bottom: 3px solid #ffd966;
+  display: inline-block;
+  width: auto;
+  padding-bottom: 5px;
+}
+
+/* Статистика */
+.stats {
+  background: linear-gradient(135deg, #ffe6b3, #ffd966);
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #6b4c3b;
+  border: 2px solid #ffb347;
+  box-shadow: 0 5px 0 #b97f3a;
+}
+
+.stats > div {
+  background: white;
+  padding: 8px 15px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.stats button {
+  padding: 8px 15px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: #f8f3e9;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.stats button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.stats button.active {
+  background: #6a994e;
+  color: white;
+  box-shadow: 0 2px 0 #2d5a2c;
+}
+
+.reset-button {
+  background: #e76f51 !important;
+  color: white !important;
+}
+
+.reset-button:hover {
+  background: #d45a3a !important;
+}
+
+/* Пастбища */
+.pastures {
+  background: #f8f3e9;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 2px solid #ffd966;
+}
+
+.pastures h2 {
+  margin-top: 0;
+}
+
+.pastures-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.pasture {
+  background: linear-gradient(135deg, #fff5e6, #ffe6cc);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s;
+  border: 2px solid #ffd966;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.pasture:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.pasture.owned {
+  background: linear-gradient(135deg, #ffd966, #ffb347);
+  border-color: #ff9f2e;
+}
+
+.pasture h3 {
+  margin-bottom: 12px;
+  color: #6b4c3b;
+  font-size: 1.3em;
+}
+
+.pasture p {
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #4a3727;
+}
+
+.pasture button {
+  margin-top: 12px;
+  padding: 10px;
+  background: #6a994e;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.pasture button:hover {
+  background: #40916c;
+  transform: scale(1.02);
+}
+
+/* Поля */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.plot {
+  aspect-ratio: 1;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.plot:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+}
+
+.plot.locked {
+  background: repeating-linear-gradient(
+    45deg,
+    #8b5a2b,
+    #8b5a2b 10px,
+    #a06e3a 10px,
+    #a06e3a 20px
+  );
+  border: 3px solid #ffd966;
+}
+
+.plot.field.empty {
+  background: radial-gradient(circle at 30% 30%, #d4a373, #b97f3a);
+  border: 2px solid #ffd966;
+}
+
+.plot.field.planted {
+  background: linear-gradient(135deg, #e9c46a, #d4a373);
+  animation: wiggle 0.5s;
+  border: 2px solid #ffb347;
+}
+
+.plot.field.growing {
+  background: linear-gradient(135deg, #6a994e, #40916c);
+  cursor: pointer;
+  animation: growPulse 2s infinite;
+  border: 2px solid #ffd966;
+}
+
+.plot.field.ready {
+  background: linear-gradient(135deg, #f4d03f, #f39c12);
+  animation: bounce 0.5s, shine 1s infinite;
+  border: 3px solid #ffb347;
+}
+
+.plot.field.ready:hover {
+  animation: bounce 0.3s;
+  transform: scale(1.05);
+}
+
+.emoji {
+  font-size: 48px;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+  transition: all 0.2s;
+}
+
+.plot:hover .emoji {
+  transform: scale(1.1);
+}
+
+.hint {
+  background: rgba(0,0,0,0.8);
+  color: #ffd966;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Предупреждение */
+.inactive-warning {
+  background: #e76f51;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  animation: pulse 1s infinite;
+  border: 2px solid #ffd966;
+}
+
+/* Анимации */
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes growPulse {
+  0%, 100% { 
+    box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+    filter: brightness(1);
+  }
+  50% { 
+    box-shadow: 0 6px 0 rgba(0,0,0,0.3);
+    filter: brightness(1.05);
+  }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+@keyframes shine {
+  0% { box-shadow: 0 0 5px #ffd966; }
+  50% { box-shadow: 0 0 20px #ffb347; }
+  100% { box-shadow: 0 0 5px #ffd966; }
+}
+
